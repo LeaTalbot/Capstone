@@ -1,8 +1,2 @@
-Some text
-Some more text
-And more text
-Still more text
-...
-...
-...
-Text!
+So, what do you want to say to the world? 
+"Hello World!" / "Ugh" / "..."

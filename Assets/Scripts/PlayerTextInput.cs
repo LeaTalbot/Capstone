@@ -5,19 +5,29 @@ using UnityEngine.UI;
 public class PlayerTextInput : MonoBehaviour {
 
 
+	public bool choicePossible = false;
 
 	public string whatThePlayerTypes = "";
-	public float countdown = 8f;
+	public float countdown = -1;
 	public bool hasPlayerAnswered = false;
 
-	public string value1 = "Hello World!";
-	public string value2 = "Ugh";
-	public string value3 = "...";
+	public string value1;
+	public string value2;
+	public string value3;
+
+	public bool thePlayerHasOvercome = false;
+	public bool thePlayerHasNotOvercome = false;
+
+
 
 	//MAKE THE FUTURE DIALOGUE OPTIONS AN ARRAY OF STRINGS? IN ANOTHER SCRIPT?
 
 
 	void OnGUI() {
+
+		if (!choicePossible) {
+			return;
+		}
 
 		// BASIC TEXT INPUT WINDOW
 		whatThePlayerTypes = GUI.TextField(new Rect(10, 10, 200, 20), whatThePlayerTypes, 25);
@@ -26,8 +36,11 @@ public class PlayerTextInput : MonoBehaviour {
 
 	void Update() {
 
-		//Debug.Log(countdown);
+		if (!choicePossible) {
+			return;
+		}
 
+		Debug.Log (countdown);
 
 		// AS LONG AS THE TIMER IS RUNNING AND PLAYER HAS NOT YET TYPED THE CORRECT ANSWER, DO THAT:
 		if (countdown > 1 && hasPlayerAnswered == false) {
@@ -41,9 +54,10 @@ public class PlayerTextInput : MonoBehaviour {
 
 
 		// IF THE PLAYER FAILS TO ANSWER BEFORE THE TIMER RUNS OUT:
-		else if (countdown < 1 && hasPlayerAnswered == false) {
+		else if (countdown < 1 && countdown > 0 && hasPlayerAnswered == false) {
 
 			Debug.Log("YOU FAIL.");
+			thePlayerHasNotOvercome = true;
 			
 		}
 
@@ -51,10 +65,7 @@ public class PlayerTextInput : MonoBehaviour {
 		if (hasPlayerAnswered) {
 			
 			Debug.Log("YOU'VE SUCCEEDED! FOR NOW.");
-			hasPlayerAnswered = false;
-			countdown = 8f;
-			// go to next set of values
-			// or perhaps let that be handled by a separate, story script?
+			thePlayerHasOvercome = true;
 		}
 	}
 }
