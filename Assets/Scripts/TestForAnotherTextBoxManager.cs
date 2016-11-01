@@ -31,12 +31,14 @@ public class TestForAnotherTextBoxManager : MonoBehaviour {
 
 
 
+//=================================================================================================
+// START + CUSTOM METHODS
+//=================================================================================================
 
 	void Start() {
 
 		playerTextInput = GameObject.Find("Main Camera").GetComponent<PlayerTextInput>();
 	}
-
 
 
 	void ResetEverything() {
@@ -50,7 +52,6 @@ public class TestForAnotherTextBoxManager : MonoBehaviour {
 		playerTextInput.countdown = -1f;
 		playerTextInput.whatThePlayerTypes = "";
 	}
-
 
 
 	void DialogueChoices(int timer, string text1, string text2, string text3, string value1, string value2, string value3) {
@@ -67,8 +68,12 @@ public class TestForAnotherTextBoxManager : MonoBehaviour {
 
 		isKeyEnabled = false;
 		playerTextInput.choicePossible = true;
-	}
+	}		
 
+
+//=================================================================================================
+// WHERE THE REAL MEAN STUFF BEGINS
+//=================================================================================================
 
 	void Update () {
 
