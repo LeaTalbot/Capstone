@@ -45,16 +45,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PlayerTextInput.cs" />
-     <Compile Include="Assets\Scripts\TestForAnotherTextBoxManager.cs" />
-     <Compile Include="Assets\Scripts\TextBoxManager.cs" />
-     <None Include="Assets\Text\Test.txt" />
+     <Compile Include="Assets\Scripts\Scenes\Scene0.cs" />
+     <Compile Include="Assets\Scripts\Scenes\Scene1.cs" />
+     <Compile Include="Assets\Scripts\System\ClickObjects.cs" />
+     <Compile Include="Assets\Scripts\System\NameBoxManager.cs" />
+     <Compile Include="Assets\Scripts\System\PlayerTextInput.cs" />
+     <Compile Include="Assets\Scripts\System\TextBoxManager.cs" />
+     <Compile Include="Assets\Scripts\Tests\TestForAnotherTextBoxManager.cs" />
+     <Compile Include="Assets\Scripts\Tests\TestForTextBoxManager.cs" />
+     <None Include="Assets\Text\Scene0.txt" />
+     <None Include="Assets\Plugins\Ink\Template\Template.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Gamemaking/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>F:/Gamemaking/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
+ <Reference Include="ink-engine">
+ <HintPath>F:/Gamemaking/Unity Projects/Capstone/Assets/Plugins/Ink/Inklecate/ink-engine.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{7F56E623-E214-5249-7A68-5A6003024663}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
