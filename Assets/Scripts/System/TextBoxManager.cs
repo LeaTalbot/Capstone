@@ -16,14 +16,18 @@ public class TextBoxManager : MonoBehaviour {
 	back and forth a few lines.
 	*/
 
+	//public static TextBoxManager Instance;
+
 	public NameBoxManager nameBoxManager;
 	public PlayerTextInput playerTextInput;
 	public GameObject textBox;
-	public GameObject nameBox;
+	public GameObject nameBox; 
+	public GameObject clickBox;
 
 	public Text theText;
 	public int lineCode = 0;
 
+	public bool isStoryTextBoxActive;
 	public bool isKeyEnabled = true;
 	public bool hasSetCountdown = false;
 
@@ -32,13 +36,19 @@ public class TextBoxManager : MonoBehaviour {
 
 
 
+	// Singleton pattern so that there is only one text manager in the scene
+	//void Awake() {
+	//	Instance = this;
+	//}
+
+
 	// START + CUSTOM METHODS FOR FUTURE SCENES
 
 
 	void Start() {
 
 		playerTextInput = GameObject.Find("Main Camera").GetComponent<PlayerTextInput>();
-		nameBoxManager = GameObject.Find("Name Script").GetComponent<NameBoxManager>();
+		nameBoxManager = GameObject.Find("Panel Name - nameBox").GetComponent<NameBoxManager>();
 	}
 
 
@@ -69,6 +79,20 @@ public class TextBoxManager : MonoBehaviour {
 
 		isKeyEnabled = false;
 		playerTextInput.choicePossible = true;
+	}
+
+	void Update() {
+
+
+		if (textBox.activeInHierarchy == false) {
+			nameBox.SetActive(false);
+			isStoryTextBoxActive = false;
+		} else if (textBox.activeInHierarchy == true) {
+			nameBox.SetActive(true);
+			isStoryTextBoxActive = true;
+		}
+			
+		clickBox.SetActive(!isStoryTextBoxActive);
 	}
 
 

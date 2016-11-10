@@ -6,47 +6,65 @@ public class ClickObjects : TextBoxManager {
 
 
 
+
+	// So. Turns out the boolean isStoryTextBoxActive is NOT the same as the one in the TextBoxManager. So we'll have to reference this one specifically!
+	// Likewise, it uses its own textBox value.
+
+	public TextBoxManager textBoxManager;
+
+
+
 	void Update () {
 
-		if (Input.GetMouseButtonDown(0)) {
-			Debug.DrawLine (Camera.main.transform.position, Input.mousePosition);
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit = new RaycastHit();
+//		if (TextBoxManager.Instance.isStoryTextBoxActive == true) {
+//			textBox.SetActive(false); // different assigned textBox than in Textmanager!
+//		}
 
-			if (Physics.Raycast(ray, out hit, 1000f)) {
+		//if (textBoxManager.isStoryTextBoxActive == false) {
+		if (!textBoxManager.textBox.activeInHierarchy) {
+		//		if (!TextBoxManager.Instance.textBox.activeInHierarchy) {
 
-//================================================================================================
-//================================================================================================
 
-				if (hit.collider.tag == "Door") {
+			if (Input.GetMouseButtonDown(0)) {
+				
+				Debug.DrawLine (Camera.main.transform.position, Input.mousePosition);
+				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+				RaycastHit hit = new RaycastHit();
 
-/*					DialogueChoices (-1, "Should I go out now?", "", "", "Yes", "No", "YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS");
+				if (Physics.Raycast(ray, out hit, 1000f)) {
 
-					if (playerTextInput.thePlayerHasNotOvercome) {
-						ResetEverything();
-						Debug.Log ("This should not happen.");
+					//================================================================================================
+					//================================================================================================
 
-					} else if (playerTextInput.thePlayerHasOvercome) {
-						ResetEverything();
+					if (hit.collider.tag == "Door") {
 
-						if (playerTextInput.whatThePlayerTypes == "Yes") {
-							Debug.Log ("Wah. It... worked?");
-						}
+						Debug.Log ("I've hit the door. Nice!");
 
-						if (playerTextInput.whatThePlayerTypes == "No") {
-							Debug.Log ("Wah. It... REALLY worked?");
-						}
+						DialogueChoices (-1, "Should I go out now?", "", "", "Yes", "No", "YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS");
 
-						else {
-							Debug.Log ("I definitely should only be able to type only Yes or No. Or YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS. What happened here?");
-						}
-					} 
-*/
+						if (playerTextInput.thePlayerHasNotOvercome) {
+							ResetEverything();
+							Debug.Log ("This should not happen.");
 
-//================================================================================================
-//================================================================================================
+						} else if (playerTextInput.thePlayerHasOvercome) {
+							ResetEverything();
 
-				} 
+							if (playerTextInput.whatThePlayerTypes == "Yes") {
+								Debug.Log ("Wah. It... worked?");
+							}
+
+							if (playerTextInput.whatThePlayerTypes == "No") {
+								Debug.Log ("Wah. It... REALLY worked?");
+							}
+
+							else {
+								Debug.Log ("I definitely should only be able to type only Yes or No. Or YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS. What happened here?");
+							}
+						} 
+					}
+					//================================================================================================
+					//================================================================================================
+				}
 			}
 		}
 	}

@@ -94,7 +94,8 @@ public class Scene0 : TextBoxManager {
 		}
 
 		if (lineCode == 19) {
-			SceneManager.LoadScene("Scene1");
+			//SceneManager.LoadScene("Scene1");
+			textBox.SetActive(false);
 		}
 	}
 }

@@ -40,8 +40,6 @@ public class PlayerTextInput : MonoBehaviour {
 			return;
 		}
 
-		Debug.Log (countdown);
-
 		// AS LONG AS THE TIMER IS RUNNING AND PLAYER HAS NOT YET TYPED THE CORRECT ANSWER, DO THAT:
 		if (countdown > 1 && hasPlayerAnswered == false) {
 
