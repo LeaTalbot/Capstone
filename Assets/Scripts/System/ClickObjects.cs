@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class ClickObjects : TextBoxManager {
 
 
-
+	public GameObject textBoxManagerInstance;
 	private bool stopTogglingYouAsshole = false;
+	private bool doorTest = false;
 
 
 //	public TextBoxManager textBoxManager;
@@ -16,20 +17,11 @@ public class ClickObjects : TextBoxManager {
 
 
 
+
 	void Update () {
 
-
-//		if (TextBoxManager.Instance.isStoryTextBoxActive == true) {
-//			textBox.SetActive(false); // different assigned textBox than in Textmanager!
-//		}
-
-		//if (textBoxManager.isStoryTextBoxActive == false) {
-		//if (!textBoxManager.textBox.activeInHierarchy) {
-		//if (!TextBoxManager.Instance.textBox.activeInHierarchy) {
-
-
-
-		if (!TextBoxManager.Instance.textBox.activeInHierarchy) {
+	
+		if (!TextBoxManager.Instance.storyBox.activeInHierarchy) {
 
 
 			if (!stopTogglingYouAsshole) {
@@ -40,9 +32,6 @@ public class ClickObjects : TextBoxManager {
 
 
 			if (Input.GetMouseButtonDown(0)) {
-
-				//add private boolean to do it only once
-				TextBoxManager.Instance.ToggleAll();
 				
 				Debug.DrawLine (Camera.main.transform.position, Input.mousePosition);
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -50,47 +39,55 @@ public class ClickObjects : TextBoxManager {
 
 				if (Physics.Raycast(ray, out hit, 1000f)) {
 
-					//================================================================================================
-
-					// DOOR
-
-					//================================================================================================
-
-					//Debug.Log(hit.collider.tag);
 					if (hit.collider.tag == "Door") {
 
-						Debug.Log ("I've hit the door. Nice!");
+						TextBoxManager.Instance.ToggleAll();
+						stopTogglingYouAsshole = false;
+						doorTest = true;
 
-						TextBoxManager.Instance.DialogueChoices (-1, "Should I go out now?", "", "", "Yes", "No", "YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS");
-
-						if (TextBoxManager.Instance.playerTextInput.thePlayerHasNotOvercome) {
-							TextBoxManager.Instance.ResetEverything();
-							Debug.Log ("This should not happen.");
-
-						} else if (TextBoxManager.Instance.playerTextInput.thePlayerHasOvercome) {
-							TextBoxManager.Instance.ResetEverything();
-
-							if (TextBoxManager.Instance.playerTextInput.whatThePlayerTypes == "Yes") {
-								Debug.Log ("Wah. It... worked?");
-							}
-
-							if (TextBoxManager.Instance.playerTextInput.whatThePlayerTypes == "No") {
-								Debug.Log ("Wah. It... REALLY worked?");
-							}
-
-							else {
-								Debug.Log ("I definitely should only be able to type only Yes or No. Or YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS. What happened here?");
-							}
-						} 
 					} else {
 						return;
 					}
-
-					//================================================================================================
-
-					//================================================================================================
 				}
 			}
 		}
+
+		if (doorTest == true) {
+			SuccessfullyGotOutTheDoorTestMethod();
+		}
 	}
+
+
+
+	private void SuccessfullyGotOutTheDoorTestMethod() {
+
+		TextBoxManager.Instance.DialogueChoices (-1, "Should I go out now?", "", "", "Yes", "No", "YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS");
+
+		if (TextBoxManager.Instance.playerTextInput.thePlayerHasNotOvercome) {
+			TextBoxManager.Instance.ResetEverything();
+			Debug.Log ("thePlayerHasNotOvercome should not occur when there is not timer...");
+
+		} else if (TextBoxManager.Instance.playerTextInput.thePlayerHasOvercome) {
+			Debug.Log ("We're inside the loop! thePlayerHasOvercome= " + TextBoxManager.Instance.playerTextInput.thePlayerHasOvercome + "; whatThePlayerTypes= " + TextBoxManager.Instance.playerTextInput.whatThePlayerTypes + ".");
+			TextBoxManager.Instance.ResetEverything();
+
+
+			if (TextBoxManager.Instance.playerTextInput.whatThePlayerTypes == "Yes") {
+				Debug.Log ("The player typed Yes, and the story can continue.");
+			}
+
+			if (TextBoxManager.Instance.playerTextInput.whatThePlayerTypes == "No") {
+				Debug.Log ("The player typed No. It's kinda stupid, but whatevs.");
+			}
+
+			else {
+				Debug.Log ("I definitely should only be able to type only Yes or No. Or YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS. What happened here?");
+			}
+		}
+	}
+
+			//================================================================================================
+
+			//================================================================================================
+
 }

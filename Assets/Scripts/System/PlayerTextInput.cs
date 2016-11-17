@@ -1,8 +1,28 @@
-﻿using UnityEngine;
+﻿
+
+//==============================================================================================
+
+// HOW THE PLAYER PROGRESSES: TYPING ANSWERS
+
+//==============================================================================================
+
+
+
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerTextInput : MonoBehaviour {
+
+
+
+
+	//==============================================================================================
+
+	// VARIABLES
+
+	//==============================================================================================
 
 
 	public bool choicePossible = false;
@@ -20,7 +40,9 @@ public class PlayerTextInput : MonoBehaviour {
 
 
 
-	//MAKE THE FUTURE DIALOGUE OPTIONS AN ARRAY OF STRINGS? IN ANOTHER SCRIPT?
+	//==============================================================================================
+
+	//==============================================================================================
 
 
 	void OnGUI() {
@@ -32,6 +54,12 @@ public class PlayerTextInput : MonoBehaviour {
 		// BASIC TEXT INPUT WINDOW
 		whatThePlayerTypes = GUI.TextField(new Rect(10, 10, 200, 20), whatThePlayerTypes, 25);
 	}
+
+
+
+	//==============================================================================================
+
+	//==============================================================================================
 
 
 	void Update() {
@@ -62,16 +90,12 @@ public class PlayerTextInput : MonoBehaviour {
 
 		// IF THE PLAYER FAILS TO ANSWER BEFORE THE TIMER RUNS OUT:
 		if (countdown < 1 && countdown > 0 && hasPlayerAnswered == false) {
-
-			Debug.Log("YOU FAIL.");
 			thePlayerHasNotOvercome = true;
 			
 		}
 
 		// IF THE PLAYER HAS ANSWERED, LET US PROCEED WITH THE GAME AND RESET BOOL AND TIMER:
 		if (hasPlayerAnswered) {
-			
-			Debug.Log("YOU'VE SUCCEEDED! FOR NOW.");
 			thePlayerHasOvercome = true;
 		}
 	}

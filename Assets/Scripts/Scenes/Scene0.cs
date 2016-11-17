@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Scene0 : TextBoxManager {
 
-	public GameObject textBoxManagerInstance; //assign in inspector
-
-	//public TextBoxManager textBoxManager;
-	bool storyDone =false;
+	//public GameObject textBoxManagerInstance; 
+	bool storyDone = false;
 
 	void Update () {
 
+		//if (TextBoxManager.Instance.startTheStory = true) {}
 		if (Input.GetKeyDown(KeyCode.Return)) {
 			if (!isKeyEnabled) {
 				return;
@@ -21,103 +20,95 @@ public class Scene0 : TextBoxManager {
 
 		if (lineCode == 0) {
 			//resize textbox
-			textBoxManagerInstance.GetComponent<TextBoxManager>().isMainCharTalking = true;
-			//TextBoxManager.Instance.isMainCharTalking = true;
-			theText.text = "...I don't want to go.";
+			//textBoxManagerInstance.GetComponent<TextBoxManager>().isMainCharTalking = true;
+			TextBoxManager.Instance.isMainCharTalking = true;
+			storyText.text = "...I don't want to go.";
 		}
 
 		if (lineCode == 1) {
-			theText.text = "Maybe I should stay.";
+			storyText.text = "Maybe I should stay.";
 		}
 
 		if (lineCode == 2) {
-			theText.text = "After all, I still have a lot of work to do. Shit to write and stuff.";
+			storyText.text = "After all, I still have a lot of work to do. Shit to write and stuff.";
 		}
 
 		if (lineCode == 3) {
-			theText.text = "Yeah. I should stay.";
+			storyText.text = "Yeah. I should stay.";
 		}
 
 		if (lineCode == 4) {
-			theText.text = "...";
+			storyText.text = "...";
 		}
 
 		if (lineCode == 5) {
-			theText.text = "But I have to go. ";
+			storyText.text = "But I have to go. ";
 		}
 
 		if (lineCode == 6) {
-			theText.text = "I managed to get myself invited over somehow, so really I should not pass it up.";
+			storyText.text = "I managed to get myself invited over somehow, so really I should not pass it up.";
 		}
 
 		if (lineCode == 7) {
-			theText.text = "... My social life's been a desert, so... Yeah, no choice really.";
+			storyText.text = "... My social life's been a desert, so... Yeah, no choice really.";
 		}
 			
 		if (lineCode == 8) {
-			theText.text = "Can't make friends without putting some effort into it.";
+			storyText.text = "Can't make friends without putting some effort into it.";
 		}
 
 		if (lineCode == 9) {
-			theText.text = "But god, I really don't want to go.";
+			storyText.text = "But god, I really don't want to go.";
 		}
 
 		if (lineCode == 10) {
-			theText.text = "...";
+			storyText.text = "...";
 		}
 
 		if (lineCode ==11) {
-			theText.text = "... ...";
+			storyText.text = "... ...";
 		}
 
 		if (lineCode == 12) {
-			theText.text = "... ... ...";
+			storyText.text = "... ... ...";
 		}
 
 		if (lineCode == 13) {
-			theText.text = "Okay, time's up. Been fifteen minutes of debating whether I should go, well I'll go, godammit.";
+			storyText.text = "Okay, time's up. Been fifteen minutes of debating whether I should go, well I'll go, godammit.";
 		}
 
 		if (lineCode == 14) {
-			theText.text = "Let's get this over with.";
+			storyText.text = "Let's get this over with.";
 		}
 
 		if (lineCode == 15) {
-			theText.text = "I should see this as community service to myself.";
+			storyText.text = "I should see this as community service to myself.";
 		}
 
 		if (lineCode == 16) {
-			theText.text = "Mom'll like it too. Win-win situation. Just a few hours of discomfort.";
+			storyText.text = "Mom'll like it too. Win-win situation. Just a few hours of discomfort.";
 		}
 
 		if (lineCode == 17) {
-			theText.text = "Tripping on every goddamn word again, making a fool of my little self. Who cares.";
+			storyText.text = "Tripping on every goddamn word again, making a fool of my little self. Who cares.";
 		}
 
 		if (lineCode == 18) {
-			theText.text = "I'll probably enjoy it in the end.";
+			storyText.text = "I'll probably enjoy it in the end.";
 		}
 
 		if (lineCode == 19) {
 			//SceneManager.LoadScene("Scene1");
 
 			if (!storyDone) {
+
+				//Invoke(ChangeScene("Scene1"), 1);
+
 				TextBoxManager.Instance.ToggleAll();
 				storyDone = true;
+
 				//SceneManager.LoadScene("Scene1");
 			}
-
-			//TextBoxManager.Instance.DialogueChoices(-1, "Should I go?", "Yes", "No", "Yes", "No", "CongratsYouFoundABugInTheMaaaatrix");
-
-			//if (TextBoxManager.Instance.playerTextInput.thePlayerHasNotOvercome) {
-			//	TextBoxManager.Instance.ResetEverything();
-			//	Debug.Log ("Choice was given, and the player has chosen.");
-
-			//} else if (TextBoxManager.Instance.playerTextInput.thePlayerHasOvercome) {
-			//	TextBoxManager.Instance.ResetEverything();
-			//	Debug.Log ("This... should not be happening.");
-
-			//} 
 		}
 	}
 }

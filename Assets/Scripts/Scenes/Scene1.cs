@@ -17,80 +17,80 @@ public class Scene1 : TextBoxManager {
 		}
 
 		if (lineCode == 0) {
-			theText.text = "Hu";
+			storyText.text = "Hu";
 		}
 
 		if (lineCode == 1) {
-			theText.text = "Uh";
+			storyText.text = "Uh";
 			lineCode = 30;
 		}
 
 		if (lineCode == 2) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 3) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 4) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 5) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 6) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 7) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 8) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 9) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 10) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode ==11) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 12) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 13) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 14) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 15) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 16) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 17) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 		if (lineCode == 18) {
-			theText.text = "";
+			storyText.text = "";
 		}
 
 

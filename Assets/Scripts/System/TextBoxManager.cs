@@ -1,15 +1,22 @@
-﻿using UnityEngine;
+﻿
+
+//==============================================================================================
+
+// TOGGLE TEXTBOXES + CUSTOM METHODS FOR FUTURE SCENES
+
+//==============================================================================================
+
+
+
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TextBoxManager : MonoBehaviour {
 
 
-	//==============================================================================================
-
-	// TOGGLE TEXTBOXES + CUSTOM METHODS FOR FUTURE SCENES
-
-	//==============================================================================================
 
 
 	//==============================================================================================
@@ -20,28 +27,25 @@ public class TextBoxManager : MonoBehaviour {
 
 
 	public static TextBoxManager Instance;
-
-	//public NameBoxManager nameBoxManager;
 	public PlayerTextInput playerTextInput;
 
-
-
-	public GameObject textBox;
+	public GameObject storyBox;
 	public GameObject nameBox; 
 	public GameObject clickBox;
 
 	public Text nameText;
-	public Text theText;
+	public Text storyText;
+	public Text clickText;
 	public int lineCode = 0;
+
 	/*
-	A note to myself on "lineCode": assign segments for each scenes. Ex 0-100 for the first scene. 
+	A NOTE TO MYSELF ON LINECODES 
+	Assign segments for each scenes. Ex 0-100 for the first scene. 
 	100-200 for the second... So that if we have modifications to make, we don't have to move EVERYTHING
 	back and forth a few lines.
 	*/
 
 
-
-	//public bool isStoryTextBoxActive;
 	private bool m_showAnyTextbox = true;
 	private bool m_showingMain = true;
 
@@ -49,7 +53,6 @@ public class TextBoxManager : MonoBehaviour {
 	// public bool isCharXtalking = false;
 	// public bool isCharYtalking = false;
 	//...
-
 
 
 	public bool isKeyEnabled = true;
@@ -75,9 +78,8 @@ public class TextBoxManager : MonoBehaviour {
 
 	void Start() {
 
-		isMainCharTalking = false;
+		isMainCharTalking = true;
 		playerTextInput = GameObject.Find("Main Camera").GetComponent<PlayerTextInput>();
-		//nameBoxManager = GameObject.Find("Panel Name - nameBox").GetComponent<NameBoxManager>();
 
 		_updateTextBoxes();
 	}
@@ -92,7 +94,7 @@ public class TextBoxManager : MonoBehaviour {
 	// Update call for the textboxes
 	private void _updateTextBoxes() {
 
-		textBox.SetActive(m_showingMain && m_showAnyTextbox);
+		storyBox.SetActive(m_showingMain && m_showAnyTextbox);
 		clickBox.SetActive(!m_showingMain && m_showAnyTextbox);
 	}
 
@@ -132,9 +134,10 @@ public class TextBoxManager : MonoBehaviour {
 	}
 
 
+	//IN THIS SCRIPT, NO DISTINCTION BETWEEN STORYTEXT AND CLICK TEXT. ALSO WE CAN'T REALLY DO THAT BECAUSE WE WANT TO USE DIALOGUE CHOICES FOR BOTH?
 	public void DialogueChoices(int timer, string text1, string text2, string text3, string value1, string value2, string value3) {
 
-		theText.text = text1 + "\n" + text2 + "\n" + text3;
+		storyText.text = text1 + "\n" + text2 + "\n" + text3;
 		playerTextInput.value1 = value1;
 		playerTextInput.value2 = value2;
 		playerTextInput.value3 = value3;
@@ -158,16 +161,14 @@ public class TextBoxManager : MonoBehaviour {
 	void Update() {
 
 
-		if (textBox.activeInHierarchy == false) {
+		if (storyBox.activeInHierarchy == false) {
 			nameBox.SetActive(false);
-//			isStoryTextBoxActive = false;
-		} else if (textBox.activeInHierarchy == true) {
+		} else if (storyBox.activeInHierarchy == true) {
 			nameBox.SetActive(true);
-//			isStoryTextBoxActive = true;
 		}
 
 		if (isMainCharTalking) {
-			nameText.text = "Me";
+			nameText.text = "MCName";
 		}
 
 		//if none of the names are activated -----> disable text box
@@ -175,27 +176,31 @@ public class TextBoxManager : MonoBehaviour {
 
 
 
-//	public void ChangeScene() { 
+	//public void ChangeScene(string nameScene) { 
 
-		//textBox.SetActive(false);
-		//nameBox.SetActive(false);
-		//Debug.Log("About to wait...");
-		//StartCoroutine(WaitFunction(10));
-		//Debug.Log("We waited.");
+	//	ToggleAll();
+	//	SceneManager.LoadScene(nameScene);
+	//}
 
-		/*JUICE AT THE END OF THE SCENE?
-		SceneManager.LoadScene(targetScene); or perhaps: SceneManager.LoadScene("\""+ targetScene +"\"");
+
+
+
+
+//	public void StartScene() {
+
+//		ToggleAll();
+//	}
+
+	/*JUICE AT THE END OF THE SCENE?
+		SceneManager.LoadScene(nameScene); or perhaps: SceneManager.LoadScene("\""+ nameScene +"\"");
 		Wait half a second then fade to next scene
 		At the beginning of each scene including this one, little fade in
 		Wait half a second to make the box active
 		Make all of that one or two method here to be called super easily in each scene
 		*/
-//	}
 
-//	private IEnumerator WaitFunction(int timetoWait) {
-//		if (hasWaited == false) {
-//			yield return new WaitForSeconds (timetoWait);
-//			hasWaited = true;
-//		}
-//	}
+	//Invoke("ChangeScene", 1);
+	//use this method, but wait a second before playing it
+
+
 }

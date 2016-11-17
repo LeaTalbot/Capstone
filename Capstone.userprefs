@@ -1,12 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Scenes\Scene0.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\System\TextBoxManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\System\PlayerTextInput.cs" Line="49" Column="11" />
-      <File FileName="Assets\Scripts\System\TextBoxManager.cs" Line="78" Column="29" />
-      <File FileName="Assets\Scripts\System\ClickObjects.cs" Line="64" Column="9" />
-      <File FileName="Assets\Scripts\Scenes\Scene0.cs" Line="24" Column="58" />
-      <File FileName="Assets\Scripts\Scenes\Scene1.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\System\PlayerTextInput.cs" Line="98" Column="27" />
+      <File FileName="Assets\Scripts\System\TextBoxManager.cs" Line="137" Column="147" />
+      <File FileName="Assets\Scripts\System\ClickObjects.cs" Line="68" Column="86" />
+      <File FileName="Assets\Scripts\Scenes\Scene0.cs" Line="12" Column="3" />
+      <File FileName="Assets\Scripts\Scenes\Scene1.cs" Line="97" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
