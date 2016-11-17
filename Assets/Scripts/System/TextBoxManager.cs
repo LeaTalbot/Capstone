@@ -5,51 +5,118 @@ using UnityEngine.UI;
 public class TextBoxManager : MonoBehaviour {
 
 
+	//==============================================================================================
 
-	// Add visible timer
+	// TOGGLE TEXTBOXES + CUSTOM METHODS FOR FUTURE SCENES
+
+	//==============================================================================================
+
+
+	//==============================================================================================
 
 	// VARIABLES
 
+	//==============================================================================================
+
+
+	public static TextBoxManager Instance;
+
+	//public NameBoxManager nameBoxManager;
+	public PlayerTextInput playerTextInput;
+
+
+
+	public GameObject textBox;
+	public GameObject nameBox; 
+	public GameObject clickBox;
+
+	public Text nameText;
+	public Text theText;
+	public int lineCode = 0;
 	/*
 	A note to myself on "lineCode": assign segments for each scenes. Ex 0-100 for the first scene. 
 	100-200 for the second... So that if we have modifications to make, we don't have to move EVERYTHING
 	back and forth a few lines.
 	*/
 
-	//public static TextBoxManager Instance;
 
-	public NameBoxManager nameBoxManager;
-	public PlayerTextInput playerTextInput;
-	public GameObject textBox;
-	public GameObject nameBox; 
-	public GameObject clickBox;
 
-	public Text theText;
-	public int lineCode = 0;
+	//public bool isStoryTextBoxActive;
+	private bool m_showAnyTextbox = true;
+	private bool m_showingMain = true;
 
-	public bool isStoryTextBoxActive;
+	public bool isMainCharTalking;
+	// public bool isCharXtalking = false;
+	// public bool isCharYtalking = false;
+	//...
+
+
+
 	public bool isKeyEnabled = true;
 	public bool hasSetCountdown = false;
 
 	public bool hasWaited = true;
 
+	// Add visible timer
+
+
+	//==============================================================================================
+
+	//==============================================================================================
 
 
 
 	// Singleton pattern so that there is only one text manager in the scene
-	//void Awake() {
-	//	Instance = this;
-	//}
-
-
-	// START + CUSTOM METHODS FOR FUTURE SCENES
+	void Awake() {
+		
+		Instance = this;
+	}
 
 
 	void Start() {
 
+		isMainCharTalking = false;
 		playerTextInput = GameObject.Find("Main Camera").GetComponent<PlayerTextInput>();
-		nameBoxManager = GameObject.Find("Panel Name - nameBox").GetComponent<NameBoxManager>();
+		//nameBoxManager = GameObject.Find("Panel Name - nameBox").GetComponent<NameBoxManager>();
+
+		_updateTextBoxes();
 	}
+
+
+	//==============================================================================================
+
+	//==============================================================================================
+
+
+
+	// Update call for the textboxes
+	private void _updateTextBoxes() {
+
+		textBox.SetActive(m_showingMain && m_showAnyTextbox);
+		clickBox.SetActive(!m_showingMain && m_showAnyTextbox);
+	}
+
+
+	// Alternates between Main and Other textbox
+	public void ToggleTextBoxes() {
+
+		m_showingMain = !m_showingMain;
+		_updateTextBoxes();
+	}
+
+
+	// Alternates between having any textbox shown or none
+	public void ToggleAll() {
+
+		m_showAnyTextbox = !m_showAnyTextbox;
+		_updateTextBoxes();
+	}
+
+
+	//==============================================================================================
+
+	//==============================================================================================
+
 
 
 	public void ResetEverything() {
@@ -81,18 +148,29 @@ public class TextBoxManager : MonoBehaviour {
 		playerTextInput.choicePossible = true;
 	}
 
+
+	//==============================================================================================
+
+	//==============================================================================================
+
+
+
 	void Update() {
 
 
 		if (textBox.activeInHierarchy == false) {
 			nameBox.SetActive(false);
-			isStoryTextBoxActive = false;
+//			isStoryTextBoxActive = false;
 		} else if (textBox.activeInHierarchy == true) {
 			nameBox.SetActive(true);
-			isStoryTextBoxActive = true;
+//			isStoryTextBoxActive = true;
 		}
-			
-		clickBox.SetActive(!isStoryTextBoxActive);
+
+		if (isMainCharTalking) {
+			nameText.text = "Me";
+		}
+
+		//if none of the names are activated -----> disable text box
 	}
 
 

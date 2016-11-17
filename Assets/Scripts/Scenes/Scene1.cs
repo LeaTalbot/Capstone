@@ -22,6 +22,7 @@ public class Scene1 : TextBoxManager {
 
 		if (lineCode == 1) {
 			theText.text = "Uh";
+			lineCode = 30;
 		}
 
 		if (lineCode == 2) {

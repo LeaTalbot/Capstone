@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Scene0 : TextBoxManager {
 
+	public GameObject textBoxManagerInstance; //assign in inspector
 
+	//public TextBoxManager textBoxManager;
+	bool storyDone =false;
 
 	void Update () {
 
@@ -17,7 +20,9 @@ public class Scene0 : TextBoxManager {
 		}
 
 		if (lineCode == 0) {
-			nameBoxManager.isMainCharTalking = true;
+			//resize textbox
+			textBoxManagerInstance.GetComponent<TextBoxManager>().isMainCharTalking = true;
+			//TextBoxManager.Instance.isMainCharTalking = true;
 			theText.text = "...I don't want to go.";
 		}
 
@@ -95,7 +100,24 @@ public class Scene0 : TextBoxManager {
 
 		if (lineCode == 19) {
 			//SceneManager.LoadScene("Scene1");
-			textBox.SetActive(false);
+
+			if (!storyDone) {
+				TextBoxManager.Instance.ToggleAll();
+				storyDone = true;
+				//SceneManager.LoadScene("Scene1");
+			}
+
+			//TextBoxManager.Instance.DialogueChoices(-1, "Should I go?", "Yes", "No", "Yes", "No", "CongratsYouFoundABugInTheMaaaatrix");
+
+			//if (TextBoxManager.Instance.playerTextInput.thePlayerHasNotOvercome) {
+			//	TextBoxManager.Instance.ResetEverything();
+			//	Debug.Log ("Choice was given, and the player has chosen.");
+
+			//} else if (TextBoxManager.Instance.playerTextInput.thePlayerHasOvercome) {
+			//	TextBoxManager.Instance.ResetEverything();
+			//	Debug.Log ("This... should not be happening.");
+
+			//} 
 		}
 	}
 }

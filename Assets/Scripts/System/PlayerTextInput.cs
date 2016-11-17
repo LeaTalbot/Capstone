@@ -40,6 +40,15 @@ public class PlayerTextInput : MonoBehaviour {
 			return;
 		}
 
+		if (countdown == -1 && !hasPlayerAnswered) {
+
+			if (whatThePlayerTypes == value1 || whatThePlayerTypes == value2 || whatThePlayerTypes == value3) {
+				hasPlayerAnswered = true;
+			}
+
+			return;
+		}
+
 		// AS LONG AS THE TIMER IS RUNNING AND PLAYER HAS NOT YET TYPED THE CORRECT ANSWER, DO THAT:
 		if (countdown > 1 && hasPlayerAnswered == false) {
 
@@ -52,7 +61,7 @@ public class PlayerTextInput : MonoBehaviour {
 
 
 		// IF THE PLAYER FAILS TO ANSWER BEFORE THE TIMER RUNS OUT:
-		else if (countdown < 1 && countdown > 0 && hasPlayerAnswered == false) {
+		if (countdown < 1 && countdown > 0 && hasPlayerAnswered == false) {
 
 			Debug.Log("YOU FAIL.");
 			thePlayerHasNotOvercome = true;
