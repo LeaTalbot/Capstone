@@ -38,21 +38,11 @@ public class TextBoxManager : MonoBehaviour {
 	public Text clickText;
 	public int lineCode = 0;
 
-	/*
-	A NOTE TO MYSELF ON LINECODES 
-	Assign segments for each scenes. Ex 0-100 for the first scene. 
-	100-200 for the second... So that if we have modifications to make, we don't have to move EVERYTHING
-	back and forth a few lines.
-	*/
-
-
 	private bool m_showAnyTextbox = true;
 	private bool m_showingMain = true;
 
 	public bool isMainCharTalking;
-	// public bool isCharXtalking = false;
-	// public bool isCharYtalking = false;
-	//...
+	// public bool isCharXtalking = false; ...
 
 
 	public bool isKeyEnabled = true;
@@ -60,13 +50,11 @@ public class TextBoxManager : MonoBehaviour {
 
 	public bool hasWaited = true;
 
-	// Add visible timer
 
 
 	//==============================================================================================
 
 	//==============================================================================================
-
 
 
 	// Singleton pattern so that there is only one text manager in the scene
@@ -115,10 +103,10 @@ public class TextBoxManager : MonoBehaviour {
 	}
 
 
-	//==============================================================================================
 
 	//==============================================================================================
 
+	//==============================================================================================
 
 
 	public void ResetEverything() {
@@ -152,10 +140,10 @@ public class TextBoxManager : MonoBehaviour {
 	}
 
 
-	//==============================================================================================
 
 	//==============================================================================================
 
+	//==============================================================================================
 
 
 	void Update() {
