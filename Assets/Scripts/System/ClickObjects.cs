@@ -60,25 +60,31 @@ public class ClickObjects : TextBoxManager {
 
 		TextBoxManager.Instance.DialogueChoices (18, "Should I go out now?", "", "", "Yes", "No", "YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS");
 
+
 		if (TextBoxManager.Instance.playerTextInput.thePlayerHasNotOvercome) {
 			TextBoxManager.Instance.ResetEverything();
 			Debug.Log ("thePlayerHasNotOvercome should not occur when there is not timer...");
 			//If this line appears, it might be because of the corountine we added in PlayerTExtInput. Make sure it is stopped.
 
 		} else if (TextBoxManager.Instance.playerTextInput.thePlayerHasOvercome) {
-			Debug.Log ("We're inside the loop! thePlayerHasOvercome= " + TextBoxManager.Instance.playerTextInput.thePlayerHasOvercome + "; whatThePlayerTypes= " + TextBoxManager.Instance.playerTextInput.whatThePlayerTypes + ".");
-			TextBoxManager.Instance.ResetEverything();
+			//Debug.Log ("We're inside the loop! thePlayerHasOvercome= " + TextBoxManager.Instance.playerTextInput.thePlayerHasOvercome + "; whatThePlayerTypes= " + TextBoxManager.Instance.playerTextInput.whatThePlayerTypes + ".");
 
 			if (TextBoxManager.Instance.playerTextInput.whatThePlayerTypes == "Yes") {
 				Debug.Log ("The player typed Yes, and the story can continue.");
+				TextBoxManager.Instance.ResetEverything();
+				Invoke("GoToNextScene", 1);
 			}
 
 			else if (TextBoxManager.Instance.playerTextInput.whatThePlayerTypes == "No") {
 				Debug.Log ("The player typed No. I guess they don't want to play the game.");
+				TextBoxManager.Instance.ResetEverything();
+				ToggleAll();
 			}
 
 			else {
 				Debug.Log ("I definitely should only be able to type only Yes or No. Why did they not fire?");
+				//If this line appears, then check that the ResetEverything() function is not called BEFORE getting to the desired steps.
+				TextBoxManager.Instance.ResetEverything();
 			}
 		}
 	}

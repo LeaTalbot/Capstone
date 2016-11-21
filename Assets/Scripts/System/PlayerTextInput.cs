@@ -38,8 +38,8 @@ public class PlayerTextInput : MonoBehaviour {
 	public bool thePlayerHasOvercome = false;
 	public bool thePlayerHasNotOvercome = false;
 
-	public Transform timerBarTransform;
 	public GameObject timerBarGameObject;
+	public Transform timerBarTransform;
 
 	public int stress = 0;
 
@@ -54,7 +54,7 @@ public class PlayerTextInput : MonoBehaviour {
 	void Start() {
 
 		timerBarGameObject = GameObject.FindGameObjectWithTag("Timer");
-		timerBarTransform = GameObject.FindGameObjectWithTag("Timer").transform;
+		timerBarTransform = timerBarGameObject.transform;
 		timerBarGameObject.SetActive(false);
 	}
 

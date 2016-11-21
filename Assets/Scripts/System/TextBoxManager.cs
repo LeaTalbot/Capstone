@@ -123,6 +123,9 @@ public class TextBoxManager : MonoBehaviour {
 
 
 	//IN THIS SCRIPT, NO DISTINCTION BETWEEN STORYTEXT AND CLICK TEXT. ALSO WE CAN'T REALLY DO THAT BECAUSE WE WANT TO USE DIALOGUE CHOICES FOR BOTH?
+
+	//ALTERNATE NOT VERY SEXY SOLUTION: CREATE ANOTHER IDENTICAL METHOD "DIALOGUECHOICESCLICK" OR SOMETHING?
+
 	public void DialogueChoices(int timer, string text1, string text2, string text3, string value1, string value2, string value3) {
 
 		storyText.text = text1 + "\n" + text2 + "\n" + text3;
@@ -164,11 +167,25 @@ public class TextBoxManager : MonoBehaviour {
 
 
 
-	//public void ChangeScene(string nameScene) { 
+	public void GoToNextScene() { 
 
-	//	ToggleAll();
-	//	SceneManager.LoadScene(nameScene);
-	//}
+		ToggleAll();
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+		//If we need to change other scenes than the next in the index, scrap this and instead:
+
+		//In Scene0, write: StartCoroutine(ChangeScene("scene1"));
+
+	    //In here:
+
+		//IEnumerator ChangeScene (int sceneNumber) {
+
+		//yield return new WaitForSeconds(1);
+
+		//SceneManager.LoadScene(sceneNumber);
+
+		//}
+	}
 
 
 

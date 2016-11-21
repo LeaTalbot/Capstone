@@ -19,8 +19,7 @@ public class Scene0 : TextBoxManager {
 		}
 
 		if (lineCode == 0) {
-			//resize textbox
-			//textBoxManagerInstance.GetComponent<TextBoxManager>().isMainCharTalking = true;
+			//if not reading this first line, or the names: check that the text boxes are big enough!
 			TextBoxManager.Instance.isMainCharTalking = true;
 			storyText.text = "...I don't want to go.";
 		}
@@ -100,16 +99,10 @@ public class Scene0 : TextBoxManager {
 		}
 
 		if (lineCode == 19) {
-			//SceneManager.LoadScene("Scene1");
 
 			if (!storyDone) {
-
-				//Invoke(ChangeScene("Scene1"), 1);
-
 				TextBoxManager.Instance.ToggleAll();
 				storyDone = true;
-
-				//SceneManager.LoadScene("Scene1");
 			}
 		}
 	}
