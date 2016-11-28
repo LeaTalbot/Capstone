@@ -8,6 +8,7 @@ public class Scene0 : TextBoxManager {
 	//public GameObject textBoxManagerInstance; 
 	bool storyDone = false;
 
+
 	void Update () {
 
 		//if (TextBoxManager.Instance.startTheStory = true) {}
@@ -58,7 +59,6 @@ public class Scene0 : TextBoxManager {
 
 		if (lineCode == 9) {
 			storyText.text = "But god, I really don't want to go.";
-			playerTextInput.stress += 1;
 		}
 
 		if (lineCode == 10) {
@@ -95,7 +95,7 @@ public class Scene0 : TextBoxManager {
 
 		if (lineCode == 18) {
 			storyText.text = "I'll probably enjoy it in the end.";
-			Debug.Log("Stress: " + playerTextInput.stress);
+			Debug.Log("Stress: " + playerTextInputScript.stressScript.currentStress);
 		}
 
 		if (lineCode == 19) {

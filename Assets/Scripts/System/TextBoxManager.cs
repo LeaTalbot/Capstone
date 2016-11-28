@@ -27,7 +27,7 @@ public class TextBoxManager : MonoBehaviour {
 
 
 	public static TextBoxManager Instance;
-	public PlayerTextInput playerTextInput;
+	public PlayerTextInput playerTextInputScript;
 
 	public GameObject storyBox;
 	public GameObject nameBox; 
@@ -67,7 +67,7 @@ public class TextBoxManager : MonoBehaviour {
 	void Start() {
 
 		isMainCharTalking = true;
-		playerTextInput = GameObject.Find("Main Camera").GetComponent<PlayerTextInput>();
+		playerTextInputScript = GameObject.Find("Main Camera").GetComponent<PlayerTextInput>();
 
 		_updateTextBoxes();
 	}
@@ -113,12 +113,16 @@ public class TextBoxManager : MonoBehaviour {
 
 		hasSetCountdown = false;
 		isKeyEnabled = true;
-		playerTextInput.choicePossible = false;
-		playerTextInput.thePlayerHasOvercome = false;
-		playerTextInput.thePlayerHasNotOvercome = false;
-		playerTextInput.hasPlayerAnswered = false;
-		playerTextInput.countdown = -1f;
-		playerTextInput.whatThePlayerTypes = "";
+		playerTextInputScript.choicePossible = false;
+		playerTextInputScript.activateGUI = false;
+		playerTextInputScript.thePlayerHasOvercome = false;
+		playerTextInputScript.thePlayerHasNotOvercome = false;
+		playerTextInputScript.hasPlayerAnswered = false;
+		playerTextInputScript.countdown = -1f;
+		playerTextInputScript.whatThePlayerTypes = "";
+		playerTextInputScript.hasCoroutineStarted = true;
+		playerTextInputScript.timerBarGameObject.SetActive(false);
+
 	}
 
 
@@ -128,18 +132,19 @@ public class TextBoxManager : MonoBehaviour {
 
 	public void DialogueChoices(int timer, string text1, string text2, string text3, string value1, string value2, string value3) {
 
+		isKeyEnabled = false;
+		playerTextInputScript.choicePossible = true;
+		//playerTextInputScript.choicePossible = !playerTextInputScript.choicePossible;
+
 		storyText.text = text1 + "\n" + text2 + "\n" + text3;
-		playerTextInput.value1 = value1;
-		playerTextInput.value2 = value2;
-		playerTextInput.value3 = value3;
+		playerTextInputScript.value1 = value1;
+		playerTextInputScript.value2 = value2;
+		playerTextInputScript.value3 = value3;
 
 		if (!hasSetCountdown) {
-			playerTextInput.countdown = timer;
+			playerTextInputScript.countdown = timer;
 			hasSetCountdown = true;
 		}
-
-		isKeyEnabled = false;
-		playerTextInput.choicePossible = true;
 	}
 
 

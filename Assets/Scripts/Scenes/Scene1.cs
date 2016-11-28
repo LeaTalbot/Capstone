@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Scene1 : TextBoxManager {
 
 
+	bool stressIncreased;
 
 
 	void Update () {
@@ -94,6 +95,10 @@ public class Scene1 : TextBoxManager {
 		}
 
 
+		//if (stressIncreased == false) {
+		//	playerTextInputScript.stressScript.IncreaseStress();
+		//	stressIncreased = true;
+		//}
 
 
 		//=================================================================================================
@@ -106,11 +111,11 @@ public class Scene1 : TextBoxManager {
 
 			DialogueChoices(18, "I am well.", "...", "", "I am well.", "...", "....");
 
-			if (playerTextInput.thePlayerHasNotOvercome) {
+			if (playerTextInputScript.thePlayerHasNotOvercome) {
 				ResetEverything();
 				lineCode += 1; //more like goto or linecode = x
 
-			} else if (playerTextInput.thePlayerHasOvercome) {
+			} else if (playerTextInputScript.thePlayerHasOvercome) {
 				ResetEverything();
 				lineCode += 2;
 			} //add a fail-safe in case the choice ends end in neither of those situations?

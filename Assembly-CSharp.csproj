@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\System\ClickObjects.cs" />
      <Compile Include="Assets\Scripts\System\NameBoxManager.cs" />
      <Compile Include="Assets\Scripts\System\PlayerTextInput.cs" />
+     <Compile Include="Assets\Scripts\System\Stress.cs" />
      <Compile Include="Assets\Scripts\System\TextBoxManager.cs" />
      <Compile Include="Assets\Scripts\Tests\TestForAnotherTextBoxManager.cs" />
      <Compile Include="Assets\Scripts\Tests\TestForTextBoxManager.cs" />
