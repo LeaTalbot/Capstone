@@ -7,7 +7,9 @@ public class ClickObjects : TextBoxManager {
 
 	public GameObject textBoxManagerInstance;
 	private bool stopTogglingYouAsshole = false;
+
 	private bool doorTest = false;
+	private bool mcTest = false;
 
 
 	// Reminder: different scripts = different bool values even if inheriting bool from ancestor script
@@ -36,11 +38,22 @@ public class ClickObjects : TextBoxManager {
 
 				if (Physics.Raycast(ray, out hit, 1000f)) {
 
+
+					//==============================================================================================
+
+					//==============================================================================================
+
 					if (hit.collider.tag == "Door") {
 
 						TextBoxManager.Instance.ToggleAll();
 						stopTogglingYouAsshole = false;
 						doorTest = true;
+
+					} else if (hit.collider.tag == "MC") {
+
+						TextBoxManager.Instance.ToggleAll();
+						stopTogglingYouAsshole = false;
+						mcTest = true;
 
 					} else {
 						return;
@@ -49,11 +62,31 @@ public class ClickObjects : TextBoxManager {
 			}
 		}
 
+
+		//==============================================================================================
+
+		//==============================================================================================
+
 		if (doorTest == true) {
 			SuccessfullyGotOutTheDoorTestMethod();
 		}
+
+		if (mcTest == true) {
+
+			storyText.text = "Yup. That's me.";
+
+			if (Input.GetKey(KeyCode.Return)) {
+				mcTest = false;
+				ToggleAll();
+			}
+		}
 	}
 
+
+
+	//==============================================================================================
+
+	//==============================================================================================
 
 
 	private void SuccessfullyGotOutTheDoorTestMethod() {
@@ -90,8 +123,9 @@ public class ClickObjects : TextBoxManager {
 		}
 	}
 
-			//================================================================================================
 
-			//================================================================================================
+	//================================================================================================
+
+	//================================================================================================
 
 }
