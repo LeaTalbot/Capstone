@@ -5,19 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class Scene0 : TextBoxManager {
 
-	//public GameObject textBoxManagerInstance; 
-	bool storyDone = false;
+
+
+
+
+	//==============================================================================================
+
+	//==============================================================================================
 
 
 	void Update () {
 
-		//if (TextBoxManager.Instance.startTheStory = true) {}
 		if (Input.GetKeyDown(KeyCode.Return)) {
 			if (!isKeyEnabled) {
 				return;
 			}
 			lineCode += 1;
 		}
+
+
+
+		//==============================================================================================
+
+		//==============================================================================================
+
 
 		if (lineCode == 0) {
 			//if not reading this first line, or the names: check that the text boxes are big enough!
@@ -99,6 +110,8 @@ public class Scene0 : TextBoxManager {
 		}
 
 		if (lineCode == 19) {
+			
+			bool storyDone = false;
 
 			if (!storyDone) {
 				TextBoxManager.Instance.ToggleAll();

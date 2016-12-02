@@ -2,15 +2,13 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\System\ScrambleWords.cs">
     <Files>
-      <File FileName="Assets\Scripts\System\PlayerTextInput.cs" Line="14" Column="1" />
-      <File FileName="Assets\Scripts\System\Stress.cs" Line="54" Column="1" />
-      <File FileName="Assets\Scripts\System\TextBoxManager.cs" Line="125" Column="3" />
-      <File FileName="Assets\Scripts\System\ClickObjects.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\System\PlayerTextInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\System\Stress.cs" Line="36" Column="2" />
+      <File FileName="Assets\Scripts\System\TextBoxManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\System\ClickObjects.cs" Line="108" Column="46" />
       <File FileName="Assets\Scripts\Scenes\Scene0.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Scenes\Scene1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\System\ScrambleWords.cs" Line="51" Column="5" />
-      <File FileName="Assets\Scripts\Tests\TestForTextBoxManager.cs" Line="7" Column="2" />
-      <File FileName="..\PlatformerReskin-master\SkinlessPlatformer\Assets\Scripts\ScrollerController.cs" Line="3" Column="1" />
+      <File FileName="Assets\Scripts\Scenes\Scene1.cs" Line="132" Column="19" />
+      <File FileName="Assets\Scripts\System\ScrambleWords.cs" Line="104" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -122,3 +122,11 @@ public class Scene1 : TextBoxManager {
 		}
 	}
 }
+
+
+
+//PUBLIC
+// RECEPTIONIST
+// WAITER / WAITRESS
+
+//Good cop bad cop

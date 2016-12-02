@@ -5,13 +5,28 @@ public class Stress : MonoBehaviour {
 
 
 
+
+	//==============================================================================================
+
+	// VARIABLES
+
+	//==============================================================================================
+
+
 	public float maxStress;
 	public float currentStress;
 	public GameObject stressBar;
 	public GameObject backgroundStressBar;
 
 
-	// Use this for initialization
+
+
+
+	//==============================================================================================
+
+	//==============================================================================================
+
+
 	void Start () {
 
 		maxStress = 100f;
@@ -21,7 +36,6 @@ public class Stress : MonoBehaviour {
 
 
 
-	// Update is called once per frame
 	void Update () {
 	
 		if (currentStress == 0f) {

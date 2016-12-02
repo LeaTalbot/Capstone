@@ -5,6 +5,15 @@ using UnityEngine.UI;
 public class ClickObjects : TextBoxManager {
 
 
+
+
+	//==============================================================================================
+
+	// VARIABLES
+
+	//==============================================================================================
+
+
 	public GameObject textBoxManagerInstance;
 	private bool stopTogglingYouAsshole = false;
 
@@ -15,6 +24,11 @@ public class ClickObjects : TextBoxManager {
 	// Reminder: different scripts = different bool values even if inheriting bool from ancestor script
 
 
+
+
+	//==============================================================================================
+
+	//==============================================================================================
 
 
 	void Update () {
@@ -91,7 +105,7 @@ public class ClickObjects : TextBoxManager {
 
 	private void SuccessfullyGotOutTheDoorTestMethod() {
 
-		TextBoxManager.Instance.DialogueChoices (-1, "Should I go out now?", "", "", "Yes", "No", "YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS");
+		TextBoxManager.Instance.DialogueChoices (10, "Should I go out now?", "", "", "Yes", "No", "YoUFOUNDaLOoOpHOLEinTheMATRIxCONGRATS");
 
 
 		if (TextBoxManager.Instance.playerTextInputScript.thePlayerHasNotOvercome) {
