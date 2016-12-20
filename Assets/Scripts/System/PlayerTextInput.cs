@@ -16,6 +16,7 @@ public class PlayerTextInput : MonoBehaviour {
 
 	public bool choicePossible = false;
 	public bool activateGUI = false;
+	//public RectTransform positionGUI;
 
 	public string whatThePlayerTypes = "";
 	public float countdown = -1;
@@ -35,6 +36,9 @@ public class PlayerTextInput : MonoBehaviour {
 
 	public Stress stressScript;
 
+	public int maxSilence = 3;
+	public int currentSilence;
+
 
 
 
@@ -50,6 +54,8 @@ public class PlayerTextInput : MonoBehaviour {
 		timerBarGameObject = GameObject.FindGameObjectWithTag("Timer");
 		timerBarTransform = timerBarGameObject.transform;
 		timerBarGameObject.SetActive(false);
+
+		currentSilence = 0;
 	}
 
 
@@ -65,7 +71,11 @@ public class PlayerTextInput : MonoBehaviour {
 		}
 
 		// BASIC TEXT INPUT WINDOW
-		whatThePlayerTypes = GUI.TextField(new Rect(10, 10, 200, 20), whatThePlayerTypes, 25);
+
+		//whatThePlayerTypes = GUI.TextField(new Rect(10, 10, 200, 20), whatThePlayerTypes, 50);
+		whatThePlayerTypes = GUI.TextField(new Rect(Screen.width/4, Screen.height - (Screen.height / 3) - (Screen.height / 50), Screen.width/2, Screen.height / 12), whatThePlayerTypes, 100);
+		//whatThePlayerTypes = GUI.TextField(new Rect(positionGUI.anchoredPosition.x, positionGUI.anchoredPosition.y, positionGUI.sizeDelta.x, positionGUI.sizeDelta.y), whatThePlayerTypes, 50);
+		//whatThePlayerTypes = GUI.TextField(new Rect(positionGUI.offsetMin.x, positionGUI.offsetMin.y, 200, 20), whatThePlayerTypes, 50);
 	}
 
 
@@ -113,6 +123,7 @@ public class PlayerTextInput : MonoBehaviour {
 			if (whatThePlayerTypes == value1 || whatThePlayerTypes == value2 || whatThePlayerTypes == value3) {
 				hasPlayerAnswered = true;
 			}
+
 			choicePossible = false;
 			countdown -= Time.deltaTime;
 		} 
@@ -123,12 +134,18 @@ public class PlayerTextInput : MonoBehaviour {
 			Debug.Log ("The player has not answered.");
 			thePlayerHasNotOvercome = true;
 			stressScript.IncreaseStress();
-			
+			currentSilence += 1;
 		}
 
 		// IF THE PLAYER HAS ANSWERED, LET US PROCEED WITH THE GAME AND RESET BOOL AND TIMER:
 		if (hasPlayerAnswered) {
-			thePlayerHasOvercome = true;
+			if (whatThePlayerTypes == value3 && value3 == "...") {
+				currentSilence += 1;
+				thePlayerHasOvercome = true;
+			} else {
+				thePlayerHasOvercome = true;
+				currentSilence = 0;
+			}
 		}
 	}
 
@@ -144,6 +161,7 @@ public class PlayerTextInput : MonoBehaviour {
 		timerBarGameObject.SetActive(true);
 
 		Vector3 originalScale = timerBarTransform.transform.localScale;
+		//Vector3 originalScale = new Vector3 (Screen.width,timerBarTransform.transform.localScale.y, timerBarTransform.transform.localScale.z);
 		Vector3 destinationScale = new Vector3(0, timerBarTransform.transform.localScale.y, timerBarTransform.transform.localScale.z);
 
 		float currentTime = 0.0f;
@@ -158,6 +176,7 @@ public class PlayerTextInput : MonoBehaviour {
 		timerBarGameObject.SetActive(false); //reactivated right away for some reason
 		timerBarTransform.transform.localScale = originalScale; 
 		yield break;
+
 	}
 
 

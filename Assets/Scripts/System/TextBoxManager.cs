@@ -122,7 +122,6 @@ public class TextBoxManager : MonoBehaviour {
 		playerTextInputScript.whatThePlayerTypes = "";
 		playerTextInputScript.hasCoroutineStarted = true;
 		playerTextInputScript.timerBarGameObject.SetActive(false);
-
 	}
 
 
@@ -156,6 +155,7 @@ public class TextBoxManager : MonoBehaviour {
 
 	void Update() {
 
+		//Debug.Log ("Silence: " + playerTextInputScript.currentSilence);
 
 		if (storyBox.activeInHierarchy == false) {
 			nameBox.SetActive(false);

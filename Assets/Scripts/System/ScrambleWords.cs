@@ -24,6 +24,9 @@ public class ScrambleWords : MonoBehaviour {
 
 	//private string debugstring;
 
+	public float changeInterval = 0.5f;
+	private float timer = 0.0f;
+
 
 	//==============================================================================================
 
@@ -32,14 +35,21 @@ public class ScrambleWords : MonoBehaviour {
 
 	void Start () {
 
-		theTextToScramble.text = "This wonderful text is only temporary and helps me test the script for scrambling words!";
+		//theTextToScramble.text = "This wonderful text is only temporary and helps me test the script for scrambling words!";
 	}
 
 
 	void Update() {
 		
 		//MessingWithWords();
-		InvokeRepeating("MessingWithWords", 1f, 1f);
+		//InvokeRepeating("MessingWithWords", 1f, 1f);
+
+		timer += Time.deltaTime;
+		if (timer >= changeInterval)
+		{
+			timer = 0.0f;
+			MessingWithWords();
+		}
 	}
 
 	private void MessyUpPart(ref char[] messpart) {

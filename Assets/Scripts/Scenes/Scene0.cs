@@ -23,7 +23,7 @@ public class Scene0 : TextBoxManager {
 			lineCode += 1;
 		}
 
-
+		// if playerTextInputScript.currentSilence = playerTextInputScript.maxSilence and linecode btw x and y, do that
 
 		//==============================================================================================
 
@@ -33,83 +33,93 @@ public class Scene0 : TextBoxManager {
 		if (lineCode == 0) {
 			//if not reading this first line, or the names: check that the text boxes are big enough!
 			TextBoxManager.Instance.isMainCharTalking = true;
-			storyText.text = "...I don't want to go.";
+			storyText.text = "'...'";
 		}
 
 		if (lineCode == 1) {
-			storyText.text = "Maybe I should stay.";
+			storyText.text = "...";
 		}
 
 		if (lineCode == 2) {
-			storyText.text = "After all, I still have a lot of work to do. Shit to write and stuff.";
+			storyText.text = "'I really wish today was any other day. Even the day I got my tooth pulled out would be fine.'";
 		}
 
 		if (lineCode == 3) {
-			storyText.text = "Yeah. I should stay.";
+			storyText.text = "'Let's see... Coffee machine, broken. Beer, gone with my roommate.'";
 		}
 
 		if (lineCode == 4) {
-			storyText.text = "...";
+			storyText.text = "'Oh, that's just great. That's just fucking grand.'";
 		}
 
 		if (lineCode == 5) {
-			storyText.text = "But I have to go. ";
-		}
-
-		if (lineCode == 6) {
-			storyText.text = "I managed to get myself invited over somehow, so really I should not pass it up.";
-		}
-
-		if (lineCode == 7) {
-			storyText.text = "... My social life's been a desert, so... Yeah, no choice really.";
-		}
-			
-		if (lineCode == 8) {
-			storyText.text = "Can't make friends without putting some effort into it.";
-		}
-
-		if (lineCode == 9) {
-			storyText.text = "But god, I really don't want to go.";
-		}
-
-		if (lineCode == 10) {
 			storyText.text = "...";
 		}
 
+		if (lineCode == 6) {
+			lineCode = 10;
+			storyText.text = "";
+		}
+
+		if (lineCode == 7) {
+			storyText.text = "";
+		}
+			
+		if (lineCode == 8) {
+			storyText.text = "";
+		}
+
+		if (lineCode == 9) {
+			storyText.text = "";
+		}
+
+		if (lineCode == 10) {
+			storyText.text = "Someone's calling.";
+		}
+
 		if (lineCode ==11) {
-			storyText.text = "... ...";
+			storyText.text = "... Ah, it's Mom.";
 		}
 
 		if (lineCode == 12) {
-			storyText.text = "... ... ...";
+			DialogueChoices(18, "I am well.", "...", "", "I am well.", "...", "....");
+
+			if (playerTextInputScript.thePlayerHasNotOvercome) {
+				ResetEverything();
+				lineCode = 13; //more like goto or linecode = x
+
+			} else if (playerTextInputScript.thePlayerHasOvercome) {
+				ResetEverything();
+				lineCode = 13;
+			} //add a fail-safe in case the choice ends end in neither of those situations?
 		}
 
 		if (lineCode == 13) {
-			storyText.text = "Okay, time's up. Been fifteen minutes of debating whether I should go, well I'll go, godammit.";
+			storyText.text = "";
 		}
 
 		if (lineCode == 14) {
-			storyText.text = "Let's get this over with.";
+			storyText.text = "e";
 		}
 
 		if (lineCode == 15) {
-			storyText.text = "I should see this as community service to myself.";
+			storyText.text = "";
 		}
 
 		if (lineCode == 16) {
-			storyText.text = "Mom'll like it too. Win-win situation. Just a few hours of discomfort.";
+			storyText.text = "";
 		}
 
 		if (lineCode == 17) {
-			storyText.text = "Tripping on every goddamn word again, making a fool of my little self. Who cares.";
+			storyText.text = "";
 		}
 
 		if (lineCode == 18) {
-			storyText.text = "I'll probably enjoy it in the end.";
-			Debug.Log("Stress: " + playerTextInputScript.stressScript.currentStress);
+			storyText.text = "";
+			//Debug.Log("Stress: " + playerTextInputScript.stressScript.currentStress);
 		}
 
-		if (lineCode == 19) {
+		if (lineCode == 100) {
 			
 			bool storyDone = false;
 
