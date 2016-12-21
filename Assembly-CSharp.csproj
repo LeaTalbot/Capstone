@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Scenes\Scene0.cs" />
      <Compile Include="Assets\Scripts\Scenes\Scene1.cs" />
+     <Compile Include="Assets\Scripts\Scenes\StartScene.cs" />
      <Compile Include="Assets\Scripts\System\ClickObjects.cs" />
      <Compile Include="Assets\Scripts\System\NameBoxManager.cs" />
      <Compile Include="Assets\Scripts\System\PlayerTextInput.cs" />

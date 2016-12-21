@@ -73,7 +73,7 @@ public class PlayerTextInput : MonoBehaviour {
 		// BASIC TEXT INPUT WINDOW
 
 		//whatThePlayerTypes = GUI.TextField(new Rect(10, 10, 200, 20), whatThePlayerTypes, 50);
-		whatThePlayerTypes = GUI.TextField(new Rect(Screen.width/4, Screen.height - (Screen.height / 3) - (Screen.height / 50), Screen.width/2, Screen.height / 12), whatThePlayerTypes, 100);
+		whatThePlayerTypes = GUI.TextField(new Rect(Screen.width/3, Screen.height - (Screen.height / 3) - (Screen.height / 30), Screen.width/2, Screen.height / 12), whatThePlayerTypes, 100);
 		//whatThePlayerTypes = GUI.TextField(new Rect(positionGUI.anchoredPosition.x, positionGUI.anchoredPosition.y, positionGUI.sizeDelta.x, positionGUI.sizeDelta.y), whatThePlayerTypes, 50);
 		//whatThePlayerTypes = GUI.TextField(new Rect(positionGUI.offsetMin.x, positionGUI.offsetMin.y, 200, 20), whatThePlayerTypes, 50);
 	}
