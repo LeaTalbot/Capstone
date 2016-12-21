@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class StartScene : MonoBehaviour {
 
 
-
+	public PlayerName playerNameScript;
 	public string playerName;
 	public Button button;
 	public Text text;
@@ -17,7 +17,9 @@ public class StartScene : MonoBehaviour {
 
 
 	void Start() {
-		
+
+		playerNameScript = GameObject.Find("PlayerName").GetComponent<PlayerName>();
+
 		button = gameObject.GetComponent<Button>();
 		button.interactable = false;
 		text.color = Color.gray;
@@ -43,6 +45,7 @@ public class StartScene : MonoBehaviour {
 
 	public void OnClick() {
 
+		playerNameScript.definitivePlayerName = playerName;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 }

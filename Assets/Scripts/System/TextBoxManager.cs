@@ -28,6 +28,7 @@ public class TextBoxManager : MonoBehaviour {
 
 	public static TextBoxManager Instance;
 	public PlayerTextInput playerTextInputScript;
+	public PlayerName playerNameScript;
 
 	public GameObject storyBox;
 	public GameObject nameBox; 
@@ -68,6 +69,7 @@ public class TextBoxManager : MonoBehaviour {
 
 		isMainCharTalking = true;
 		playerTextInputScript = GameObject.Find("Main Camera").GetComponent<PlayerTextInput>();
+		playerNameScript = GameObject.Find("PlayerName").GetComponent<PlayerName>();
 
 		_updateTextBoxes();
 	}
@@ -164,7 +166,7 @@ public class TextBoxManager : MonoBehaviour {
 		}
 
 		if (isMainCharTalking) {
-			nameText.text = "MCName";
+			nameText.text = playerNameScript.definitivePlayerName;
 		}
 
 		//if none of the names are activated -----> disable text box

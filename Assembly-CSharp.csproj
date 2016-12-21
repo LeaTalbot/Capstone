@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Scenes\StartScene.cs" />
      <Compile Include="Assets\Scripts\System\ClickObjects.cs" />
      <Compile Include="Assets\Scripts\System\NameBoxManager.cs" />
+     <Compile Include="Assets\Scripts\System\PlayerName.cs" />
      <Compile Include="Assets\Scripts\System\PlayerTextInput.cs" />
      <Compile Include="Assets\Scripts\System\ScrambleWords.cs" />
      <Compile Include="Assets\Scripts\System\Stress.cs" />
