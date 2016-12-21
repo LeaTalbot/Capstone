@@ -13,8 +13,11 @@ public class Scene0 : TextBoxManager {
 
 	//==============================================================================================
 
+		
 
 	void Update () {
+
+		Debug.Log ("Linecode: " + lineCode);
 
 		if (Input.GetKeyDown(KeyCode.Return)) {
 			if (!isKeyEnabled) {
@@ -28,6 +31,7 @@ public class Scene0 : TextBoxManager {
 		//==============================================================================================
 
 		//==============================================================================================
+
 
 
 		if (lineCode == 0) {
@@ -82,7 +86,7 @@ public class Scene0 : TextBoxManager {
 		}
 
 		if (lineCode == 12) {
-			DialogueChoices(18, "I am well.", "...", "", "I am well.", "...", "....");
+			DialogueChoices(4, "I am well.", "...", "", "I am well.", "...", "....");
 
 			if (playerTextInputScript.thePlayerHasNotOvercome) {
 				ResetEverything();

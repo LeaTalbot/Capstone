@@ -39,7 +39,7 @@ public class TextBoxManager : MonoBehaviour {
 	public Text clickText;
 	public int lineCode = 0;
 
-	private bool m_showAnyTextbox = true;
+	private bool m_showAnyTextbox = false;
 	private bool m_showingMain = true;
 
 	public bool isMainCharTalking;
@@ -71,7 +71,18 @@ public class TextBoxManager : MonoBehaviour {
 		playerTextInputScript = GameObject.Find("Main Camera").GetComponent<PlayerTextInput>();
 		playerNameScript = GameObject.Find("PlayerName").GetComponent<PlayerName>();
 
+		StartCoroutine(FadeIn());
+
 		_updateTextBoxes();
+	}
+
+	IEnumerator FadeIn() {
+
+		yield return new WaitForSeconds(2f);
+		lineCode = 0;
+		ToggleTextBoxes();
+		ToggleAll();
+		yield break;
 	}
 
 

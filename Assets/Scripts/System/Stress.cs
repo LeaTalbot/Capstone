@@ -20,6 +20,7 @@ public class Stress : MonoBehaviour {
 	//public GameObject stressBar;
 	//public GameObject backgroundStressBar;
 	public GameObject heart;
+	public GameObject failUI;
 
 	private float maxBpm;
 	private float currentBpm;
@@ -34,6 +35,8 @@ public class Stress : MonoBehaviour {
 
 
 	void Start () {
+
+		failUI.SetActive(false);
 
 		maxStress = 100f;
 		currentStress = 0f;
@@ -74,6 +77,7 @@ public class Stress : MonoBehaviour {
 		BpmText.text = currentBpm + 90 + "bpm";
 
 		//VisualizeStressBar(calculatedStress);
+		StartCoroutine(FailOutline());
 
 
 
@@ -95,6 +99,22 @@ public class Stress : MonoBehaviour {
 		heart.transform.localScale = new Vector2(heart.transform.localScale.x + 0.001f, heart.transform.localScale.y + 0.001f);
 		yield return new WaitForSeconds(0.05f);
 		heart.transform.localScale = originalScale;
+		yield break;
+	}
+
+	IEnumerator FailOutline() {
+
+		failUI.SetActive(true);
+		yield return new WaitForSeconds(0.1f);
+		failUI.SetActive(false);
+		yield return new WaitForSeconds(0.1f);
+		failUI.SetActive(true);
+		yield return new WaitForSeconds(0.1f);
+		failUI.SetActive(false);
+		yield return new WaitForSeconds(0.1f);
+		failUI.SetActive(true);
+		yield return new WaitForSeconds(0.1f);
+		failUI.SetActive(false);
 		yield break;
 	}
 }
